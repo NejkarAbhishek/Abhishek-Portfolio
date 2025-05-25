@@ -18,7 +18,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ imageUrl, title, description,
   const tagBg = isDark ? "bg-zinc-700/80 text-zinc-200 border border-zinc-600" : "bg-white/80 text-zinc-700 border border-zinc-200";
   const btnBg = isDark ? "bg-zinc-900 text-zinc-100" : "bg-white text-zinc-900";
   const btnActive = isDark ? "hover:bg-zinc-800" : "hover:bg-zinc-200";
-  const btnPrimary = isDark ? "bg-gradient-to-r from-blue-700 to-purple-700 text-white" : "bg-gradient-to-r from-blue-500 to-purple-500 text-white";
+  //const btnPrimary = isDark ? "bg-gradient-to-r from-blue-700 to-purple-700 text-white" : "bg-gradient-to-r from-blue-500 to-purple-500 text-white";
 
   return (
     <div className={`rounded-3xl border p-5 flex flex-col h-full transition-all duration-300 shadow-lg hover:shadow-2xl hover:-translate-y-2 ${cardBg}`}> 

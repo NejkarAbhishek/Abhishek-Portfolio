@@ -1,10 +1,10 @@
-import React from "react";
+//import React from "react";
 
 interface Profile01Props {
   theme?: "light" | "dark";
 }
 
-const AVATAR_URL = "../assets/Profile.jpg";
+const AVATAR_URL = "/Abhishek-Portfolio/portfolioassets/Profile.jpg";
 
 export default function Profile01({ theme = "light" }: Profile01Props) {
   const isDark = theme === "dark";
@@ -45,7 +45,7 @@ export default function Profile01({ theme = "light" }: Profile01Props) {
           <hr className="my-4 border-zinc-200 dark:border-zinc-700 w-full" />
           <div className="flex items-center gap-4 mt-2">
             <a
-              href="../assets/Resume.pdf"
+              href="/Abhishek-Portfolio/portfolio/assets/Resume.pdf"
               download
               target="_blank"
               rel="noopener noreferrer"

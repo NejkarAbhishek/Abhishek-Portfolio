@@ -77,7 +77,7 @@ export default function App() {
           <div className="w-full max-w-2xl mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6" style={{width: '76vw', minWidth: 460, maxWidth: 690}}>
 
             <ProjectCard
-              imageUrl="../assets/Scribbly.png"
+              imageUrl="/Abhishek-Portfolio/portfolio/assets/Scribbly.png"
               title="Scribbly"
               description="A whiteboard collaboration platform"
               tags={["AngularJS", "MongoDB", "ExpressJS", "NodeJs", "Socket.io"]}
@@ -86,7 +86,7 @@ export default function App() {
               theme={theme}
             />
             <ProjectCard
-              imageUrl="../assets/MERN.png"
+              imageUrl="/Abhishek-Portfolio/portfolio/assets/MERN.png"
               title="HobbyHub"
               description="A platform for discovering and sharing hobbies"
               tags={["ReactJs", "MongoDB", "ExpressJS", "NodeJS"]}
@@ -95,7 +95,7 @@ export default function App() {
               theme={theme}
             />
             <ProjectCard
-              imageUrl="../assets/ForzaFerrari.png"
+              imageUrl="/Abhishek-Portfolio/portfolio/assets/ForzaFerrari.png"
               title="Forza Ferrari"
               description="A Ferrari F1 team website"
               tags={["SpringBoot", "ReactJS", "MySQL"]}
@@ -104,7 +104,7 @@ export default function App() {
               theme={theme}
             />
             <ProjectCard
-              imageUrl="../assets/Corsa.png"
+              imageUrl="/Abhishek-Portfolio/portfolio/assets/Corsa.png"
               title="CorsaF1"
               description="A F1 Race analysis platform"
               tags={["GoLang", "PostgresSQL", "Docker"]}
@@ -112,7 +112,7 @@ export default function App() {
               theme={theme}
             />
             <ProjectCard
-              imageUrl="../assets/CrisisConnect.png"
+              imageUrl="/Abhishek-Portfolio/portfolio/assets/CrisisConnect.png"
               title="Crisis Connect"
               description="A Crisis Management System"
               tags={["Java", "Java Swing"]}
