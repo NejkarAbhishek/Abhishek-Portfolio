@@ -16,7 +16,7 @@ const experiences = [
   },
   {
     company: "Apex technologies",
-    logo: "images/apex.png",
+    logo: "images/Apex.png",
     role: "Full Stack Developer Intern",
     period: "Sep 2021 - Feb 2022",
     description: "Designed and implemented end-to-end user registration, onboarding flows with Java Spring Boot and integrated Jenkins-driven CI/CD pipelines, cutting deployment time by 40%",
@@ -28,7 +28,7 @@ const experiences = [
 const education = [
   {
     company: "Northeastern University",
-    logo: "images/northeastern.png", 
+    logo: "images/Northeastern.png", 
     role: "Master of Science in Information Systems",
     period: "Expected Graduation: Dec 2026",
     description: "Coursework: Algorithms, Web Development, Object Oriented Design, Design Patterns ",
