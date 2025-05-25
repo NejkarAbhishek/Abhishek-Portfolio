@@ -7,7 +7,7 @@ interface ExperienceSectionProps {
 const experiences = [
   {
     company: "Tata Consultancy Services",
-    logo: "assets/tcs.jpeg",
+    logo: "/Abhishek-Portfolio/images/TCS.jpeg",
     role: "Software Developement Engineer",
     period: "Sep 2022 - Jul 2024",
     description: "Led full‐stack development and deployment of 11+ Java Spring Boot web applications and orchestrating AWS EC2 deployments with load balancing.",
@@ -16,7 +16,7 @@ const experiences = [
   },
   {
     company: "Apex technologies",
-    logo: "/Abhishek-Portfolio/portfolio/assets/apex.png",
+    logo: "/Abhishek-Portfolio/images/apex.png",
     role: "Full Stack Developer Intern",
     period: "Sep 2021 - Feb 2022",
     description: "Designed and implemented end-to-end user registration, onboarding flows with Java Spring Boot and integrated Jenkins-driven CI/CD pipelines, cutting deployment time by 40%",
@@ -28,7 +28,7 @@ const experiences = [
 const education = [
   {
     company: "Northeastern University",
-    logo: "/Abhishek-Portfolio/portfolio/assets/northeastern.png", 
+    logo: "/Abhishek-Portfolio/images/northeastern.png", 
     role: "Master of Science in Information Systems",
     period: "Expected Graduation: Dec 2026",
     description: "Coursework: Algorithms, Web Development, Object Oriented Design, Design Patterns ",
@@ -37,7 +37,7 @@ const education = [
   },
   {
     company: "Pune University",
-    logo: "/Abhishek-Portfolio/portfolio/assets/Sppu.jpeg",
+    logo: "/Abhishek-Portfolio/images/Sppu.jpeg",
     role: "Bachelor of Engineering in Electronics and Telecommunication",
     period: "Aug 2018 - Jul 2022",
     description: "Coursework: Data Structures, Object Oriented Programming, Computer Networks, Operating Systems, Database Management Systems, Artificial Intelligence.",

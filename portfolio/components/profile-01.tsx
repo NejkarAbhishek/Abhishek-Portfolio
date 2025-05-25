@@ -4,7 +4,7 @@ interface Profile01Props {
   theme?: "light" | "dark";
 }
 
-const AVATAR_URL = "/Abhishek-Portfolio/portfolioassets/Profile.jpg";
+const AVATAR_URL = "/Abhishek-Portfolio/images/Profile.jpg";
 
 export default function Profile01({ theme = "light" }: Profile01Props) {
   const isDark = theme === "dark";
