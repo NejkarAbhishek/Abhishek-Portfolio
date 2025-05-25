@@ -21,15 +21,14 @@ interface CardData {
   isMoreCard?: boolean
 }
 
-// 5 unique cards
 const originalCards: CardData[] = [
   {
     id: 1,
-    title: "MAGNA COASTAL",
-    subtitle: "Invest in Future",
+    title: "Scribbly",
+    subtitle: "A Whiteboard Collaboration Platform",
     description: "An undiscovered coastal jewel on the Gulf of Aqaba near the Red Sea, Magna will be a place like nothing on earth.",
     imageUrl: "https://images.unsplash.com/photo-1518623489648-a173ef7824f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2762&q=80",
-    icon: "bed",
+    icon: "",
     colors: {
       primary: "#1a1a1a",
       secondary: "#333333",
