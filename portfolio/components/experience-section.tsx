@@ -7,7 +7,7 @@ interface ExperienceSectionProps {
 const experiences = [
   {
     company: "Tata Consultancy Services",
-    logo: "../portfolio/assets/tcs.jpeg",
+    logo: "assets/tcs.jpeg",
     role: "Software Developement Engineer",
     period: "Sep 2022 - Jul 2024",
     description: "Led full‐stack development and deployment of 11+ Java Spring Boot web applications and orchestrating AWS EC2 deployments with load balancing.",
