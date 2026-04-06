@@ -1,4 +1,4 @@
-import React from "react";
+
 
 interface ProjectCardProps {
   imageUrl: string;
@@ -7,59 +7,60 @@ interface ProjectCardProps {
   tags: string[];
   websiteUrl?: string;
   githubUrl?: string;
-  theme?: "light" | "dark";
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ imageUrl, title, description, tags, websiteUrl, githubUrl, theme = "light" }) => {
-  const isDark = theme === "dark";
-  const cardBg = isDark ? "bg-zinc-800/70 border-zinc-700 backdrop-blur-md" : "bg-white/60 border-zinc-200 backdrop-blur-md";
-  const titleColor = isDark ? "text-zinc-100" : "text-zinc-900";
-  const descColor = isDark ? "text-zinc-300" : "text-zinc-600";
-  const tagBg = isDark ? "bg-zinc-700/80 text-zinc-200 border border-zinc-600" : "bg-white/80 text-zinc-700 border border-zinc-200";
-  const btnBg = isDark ? "bg-zinc-900 text-zinc-100" : "bg-white text-zinc-900";
-  const btnActive = isDark ? "hover:bg-zinc-800" : "hover:bg-zinc-200";
-  //const btnPrimary = isDark ? "bg-gradient-to-r from-blue-700 to-purple-700 text-white" : "bg-gradient-to-r from-blue-500 to-purple-500 text-white";
-
+export default function ProjectCard({ imageUrl, title, description, tags, websiteUrl, githubUrl }: ProjectCardProps) {
   return (
-    <div className={`rounded-3xl border p-5 flex flex-col h-full transition-all duration-300 shadow-lg hover:shadow-2xl hover:-translate-y-2 ${cardBg}`}> 
-      <div className={`w-full aspect-video rounded-xl overflow-hidden mb-4 flex items-center justify-center group relative ${isDark ? "bg-zinc-900" : "bg-zinc-100"}`}>
-        <img src={imageUrl} alt={title} className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105 group-hover:shadow-xl" />
-      </div>
-      <div className="flex-1 flex flex-col">
-        <h3 className={`text-xl font-extrabold mb-1 ${titleColor}`}>{title}</h3>
-        <p className={`text-base mb-3 ${descColor}`}>{description}</p>
-        <div className="flex flex-wrap gap-2 mb-4">
+    <div className="flex flex-col group/card w-full rounded-3xl bg-zinc-900/40 backdrop-blur-xl border border-zinc-800/80 hover:border-blue-500/50 transition-all duration-500 shadow-2xl hover:-translate-y-2 hover:shadow-[0_10px_40px_rgba(59,130,246,0.15)] overflow-hidden animate-fade-in-up">
+      {/* Visual Section */}
+      <a 
+        href={websiteUrl || githubUrl || "#"} 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="relative block overflow-hidden aspect-[16/10] w-full bg-zinc-950 border-b border-zinc-800/80 group/img"
+      >
+        {/* Subtle inner shadow top gradient */}
+        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent opacity-80 z-10 transition-opacity duration-500 group-hover/img:opacity-40"></div>
+        <img 
+          src={`${import.meta.env.BASE_URL}/${imageUrl.startsWith('/') ? imageUrl.slice(1) : imageUrl}`}
+          alt={title} 
+          className="w-full h-full object-cover object-top filter brightness-90 saturate-75 group-hover/img:brightness-105 group-hover/img:saturate-100 group-hover/img:scale-[1.03] transition-all duration-700 will-change-transform" 
+        />
+        
+        {/* Top Right Animated Glow Indicator */}
+        <div className="absolute top-5 right-5 w-10 h-10 rounded-full bg-blue-500/20 backdrop-blur-md border border-blue-400/30 flex items-center justify-center opacity-0 -translate-y-3 group-hover/card:opacity-100 group-hover/card:translate-y-0 transition-all duration-500 z-20 shadow-[0_0_15px_rgba(59,130,246,0.5)]">
+          <svg className="w-5 h-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+        </div>
+      </a>
+      
+      {/* Information Section */}
+      <div className="flex flex-col flex-1 p-7 sm:p-9 relative">
+        <h3 className="font-display text-3xl font-extrabold tracking-tight text-white mb-3 group-hover/card:text-blue-400 transition-colors duration-300">{title}</h3>
+        <p className="text-zinc-400 text-[15px] leading-relaxed mb-8 flex-1">{description}</p>
+        
+        {/* Tags */}
+        <div className="flex flex-wrap gap-2.5 mb-8 mt-auto">
           {tags.map((tag, idx) => (
-            <span key={idx} className={`text-xs font-semibold px-3 py-1 rounded-full ${tagBg} shadow-sm`}>{tag}</span>
+            <span key={idx} className="text-[11px] font-bold tracking-widest uppercase text-blue-300 bg-blue-500/10 px-3.5 py-1.5 rounded-lg border border-blue-500/20 shadow-sm">
+              {tag}
+            </span>
           ))}
         </div>
-        <div className="flex gap-2 mt-auto">
+        
+        {/* Actions */}
+        <div className="flex items-center gap-4 pt-6 border-t border-zinc-800/60">
           {websiteUrl && (
-            <a
-              href={websiteUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`inline-flex items-center gap-2 px-4 py-2 rounded-md font-semibold text-sm shadow-sm border ${btnBg} ${btnActive} transition-all duration-200`}
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20" stroke="currentColor" strokeWidth="2" fill="none"/></svg>
-              Website
+            <a href={websiteUrl} target="_blank" rel="noopener noreferrer" className="flex-1 flex justify-center items-center gap-2 text-[15px] font-bold tracking-wide bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-5 py-3 rounded-xl hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:scale-[1.02] transition-all">
+              Live Preview
             </a>
           )}
           {githubUrl && (
-            <a
-              href={githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`inline-flex items-center gap-2 px-4 py-2 rounded-md font-semibold text-sm shadow-sm border ${btnBg} ${btnActive} transition-all duration-200`}
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.166 6.84 9.49.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.61.07-.61 1.01.07 1.54 1.04 1.54 1.04.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85.004 1.71.115 2.51.337 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85 0 1.34-.01 2.42-.01 2.75 0 .27.18.58.69.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
-              Source
+            <a href={githubUrl} target="_blank" rel="noopener noreferrer" className="flex-1 flex justify-center items-center gap-2 text-[15px] font-bold tracking-wide bg-zinc-800/80 text-zinc-300 border border-zinc-700 px-5 py-3 rounded-xl hover:bg-zinc-700 hover:text-white transition-all">
+              Source Code
             </a>
           )}
         </div>
       </div>
     </div>
   );
-};
-
-export default ProjectCard; 
+}

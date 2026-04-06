@@ -1,26 +1,22 @@
 import { useState } from "react";
 
-interface ExperienceSectionProps {
-  theme: "light" | "dark";
-}
-
 const experiences = [
+  {
+    company: "Clear Lakes Dental",
+    logo: "images/cld.jpg",
+    role: "Software Engineer Intern",
+    period: "Sep 2025 - Dec 2025",
+    description: "Developed a patient reminder system that reduced missed clinic appointments by 40% and accelerated the development team's productivity through AI-assisted tools.",
+    details: "Full Stack Development",
+    type: "Work",
+  },
   {
     company: "Tata Consultancy Services",
     logo: "images/TCS.jpeg",
     role: "Software Developement Engineer",
     period: "Sep 2022 - Jul 2024",
-    description: "Led full‐stack development and deployment of 11+ Java Spring Boot web applications and orchestrating AWS EC2 deployments with load balancing.",
+    description: "Built and maintained financial transaction systems processing 50K+ daily operations with 99.9% reliability, improving system stability and reducing cascading failures through modern architecture and testing practices.",
     details: "Web Development",
-    type: "Work",
-  },
-  {
-    company: "Apex technologies",
-    logo: "images/Apex.png",
-    role: "Full Stack Developer Intern",
-    period: "Sep 2021 - Feb 2022",
-    description: "Designed and implemented end-to-end user registration, onboarding flows with Java Spring Boot and integrated Jenkins-driven CI/CD pipelines, cutting deployment time by 40%",
-    details: "Full Stack Development",
     type: "Work",
   },
 ];
@@ -28,7 +24,7 @@ const experiences = [
 const education = [
   {
     company: "Northeastern University",
-    logo: "images/Northeastern.png", 
+    logo: "images/Northeastern.png",
     role: "Master of Science in Information Systems",
     period: "Expected Graduation: Dec 2026",
     description: "Coursework: Algorithms, Web Development, Object Oriented Design, Design Patterns ",
@@ -46,57 +42,49 @@ const education = [
   },
 ];
 
-export default function ExperienceSection({ theme }: ExperienceSectionProps) {
+export default function ExperienceSection() {
   const [tab, setTab] = useState<'Work' | 'Education'>('Work');
-  const isDark = theme === 'dark';
-  const cardBg = isDark ? 'bg-zinc-800/70 border-zinc-700 backdrop-blur-md' : 'bg-white/60 border-zinc-200 backdrop-blur-md';
-  const tabActive = isDark ? 'bg-white/90 text-zinc-900 shadow' : 'bg-zinc-900 text-white shadow';
-  const tabInactive = isDark ? 'bg-zinc-800 text-zinc-400' : 'bg-white/80 text-zinc-400';
-  const periodColor = isDark ? 'text-zinc-200' : 'text-zinc-500';
-  const companyColor = isDark ? 'text-zinc-100' : 'text-zinc-900';
-  const roleColor = isDark ? 'text-zinc-300' : 'text-zinc-700';
-  const descColor = isDark ? 'text-zinc-200' : 'text-zinc-700';
 
-  // Select data based on tab
+  const tabActive = 'bg-gradient-to-r from-blue-600 to-purple-600 text-white border-transparent shadow-[0_0_20px_rgba(59,130,246,0.5)]';
+  const tabInactive = 'bg-zinc-900/60 text-zinc-400 border-zinc-800 hover:bg-zinc-800 hover:text-white';
   const data = tab === 'Work' ? experiences : education;
 
   return (
-    <div className={`w-full mt-8 rounded-3xl border ${cardBg} p-8 shadow-2xl`}> 
-      {/* Tabs */}
-      <div className="flex mb-8 gap-2">
-        <button
-          className={`flex-1 py-2 rounded-xl font-bold text-lg transition-colors duration-200 ${tab === 'Work' ? tabActive : tabInactive}`}
-          onClick={() => setTab('Work')}
-        >
-          Work
-        </button>
-        <button
-          className={`flex-1 py-2 rounded-xl font-bold text-lg transition-colors duration-200 ${tab === 'Education' ? tabActive : tabInactive}`}
-          onClick={() => setTab('Education')}
-        >
-          Education
-        </button>
-      </div>
-      {/* Timeline */}
-      <div className="relative">
-        {/* Vertical line for timeline */}
-        <div className="absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-200/60 via-zinc-200/60 to-purple-200/60 dark:from-zinc-700/60 dark:via-zinc-800/60 dark:to-zinc-900/60 rounded-full z-0" style={{ minHeight: 120, marginLeft: 8 }} />
-        <div className="space-y-12 relative z-10">
+    <div className="w-full flex justify-start">
+      <div className="flex flex-col w-full">
+        {/* Tabs */}
+        <div className="flex mb-12 gap-4">
+          <button
+            className={`px-8 py-3 rounded-xl font-bold text-[15px] tracking-wide border transition-all duration-300 ${tab === 'Work' ? tabActive : tabInactive}`}
+            onClick={() => setTab('Work')}
+          >
+            Experience
+          </button>
+          <button
+            className={`px-8 py-3 rounded-xl font-bold text-[15px] tracking-wide border transition-all duration-300 ${tab === 'Education' ? tabActive : tabInactive}`}
+            onClick={() => setTab('Education')}
+          >
+            Education
+          </button>
+        </div>
+
+        {/* Timeline List */}
+        <div className="space-y-12 relative mt-4">
+          <div className="absolute left-[31px] top-8 bottom-8 w-[2px] bg-gradient-to-b from-blue-500 via-purple-500/30 to-transparent z-0 opacity-50" />
+
           {data.map((exp, idx) => (
-            <div key={idx} className="flex flex-row gap-6 items-center group transition-all duration-200">
-              {/* Timeline and Logo Column */}
-              <div className="flex flex-col items-center relative w-20">
-                {/* Logo (z-10 to cover the line) */}
-                <div className="relative z-10 flex items-center justify-center w-16 h-16 rounded-full bg-white dark:bg-zinc-900 border-2 border-zinc-200 dark:border-zinc-700 shadow-xl group-hover:scale-105 transition-transform duration-200">
-                  <img src={exp.logo} alt={exp.company} className="w-12 h-12 object-contain rounded-full" />
+            <div key={idx} className="flex gap-8 items-start relative group animate-fade-in-up" style={{ animationDelay: `${idx * 150}ms` }}>
+              <div className="flex-shrink-0 z-10 relative mt-1">
+                <div className="w-16 h-16 border border-zinc-700/80 rounded-2xl bg-zinc-900/90 backdrop-blur-xl flex items-center justify-center overflow-hidden p-[3px] shadow-lg group-hover:border-blue-400 group-hover:shadow-[0_0_25px_rgba(59,130,246,0.3)] transition-all duration-500 relative ring-4 ring-[#050505]">
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <img src={`${import.meta.env.BASE_URL}/${exp.logo.startsWith('/') ? exp.logo.slice(1) : exp.logo}`} alt={exp.company} className="w-full h-full object-contain rounded-[10px] relative z-10 bg-zinc-950 p-1" />
                 </div>
               </div>
-              {/* Content Column */}
-              <div className="flex-1 flex flex-col gap-1 z-10">
-                <span className={`text-sm font-semibold mb-0.5 ${periodColor}`}>{exp.period}</span>
-                <span className={`font-extrabold text-xl mb-0.5 ${companyColor}`}>{exp.company}</span>
-                <span className={`text-base font-semibold mb-0.5 ${roleColor}`}>{exp.role}</span>
-                <span className={`text-sm font-normal mb-1 leading-relaxed ${descColor}`}>{exp.description}</span>
+              <div className="flex flex-col flex-1 pt-1 gap-1">
+                <span className="text-xs font-bold tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 uppercase mb-1">{exp.period}</span>
+                <span className="font-display font-extrabold text-2xl text-white group-hover:text-blue-100 transition-colors">{exp.company}</span>
+                <span className="text-[16px] font-semibold text-zinc-300 mt-1">{exp.role}</span>
+                <p className="text-[15px] text-zinc-400 mt-3 leading-relaxed max-w-3xl border-l-2 border-zinc-800/60 pl-4">{exp.description}</p>
               </div>
             </div>
           ))}
@@ -104,4 +92,4 @@ export default function ExperienceSection({ theme }: ExperienceSectionProps) {
       </div>
     </div>
   );
-} 
+}
